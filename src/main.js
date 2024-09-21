@@ -14,7 +14,6 @@ let lightbox = new SimpleLightbox('.gallery-item', {
   captionDelay: 250,
 });
 
-
 form.addEventListener(`submit`, onFormSubmit)
 
 function onFormSubmit(event) {
@@ -28,7 +27,7 @@ function onFormSubmit(event) {
       message: 'Please enter a search query.',
       position: 'topRight',
     });
-    return; // Зупиняємо виконання, якщо поле порожнє
+    return; 
   }
 
 fetchImages(query.value)
@@ -39,9 +38,10 @@ fetchImages(query.value)
           message: 'Sorry, there are no images matching your search query. Please try again!',
           position: 'topRight',
         });
-        return; // Зупиняємо виконання, якщо немає результатів
+        return; 
       }
       renderMarkup(data);
+      lightbox.refresh();
     })
     .catch(error => {
     iziToast.error({
@@ -51,7 +51,6 @@ fetchImages(query.value)
     });
     })
      .finally(() => {
-      // Очищення форми завжди виконується після запиту
       form.reset();
     });
     ;

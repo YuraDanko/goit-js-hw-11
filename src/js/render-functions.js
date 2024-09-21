@@ -7,10 +7,10 @@ export function renderMarkup(data) {
       <a href="${largeImageURL}" class="gallery-item">
         <img src="${webformatURL}" alt="${tags}" loading="lazy" />
         <div class="info">
-          <p><b>Likes</b>: ${likes}</p>
-          <p><b>Views</b>: ${views}</p>
-          <p><b>Comments</b>: ${comments}</p>
-          <p><b>Downloads</b>: ${downloads}</p>
+          <p><b>Likes</b> ${likes}</p>
+          <p><b>Views</b> ${views}</p>
+          <p><b>Comments</b> ${comments}</p>
+          <p><b>Downloads</b> ${downloads}</p>
         </div>
       </a>
     `;
