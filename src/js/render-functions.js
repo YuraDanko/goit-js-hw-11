@@ -6,15 +6,16 @@ export function renderMarkup(data) {
      return `
       <a href="${largeImageURL}" class="gallery-item">
         <img src="${webformatURL}" alt="${tags}" loading="lazy" />
-        <div class="info">
-          <p><b>Likes</b> ${likes}</p>
-          <p><b>Views</b> ${views}</p>
-          <p><b>Comments</b> ${comments}</p>
-          <p><b>Downloads</b> ${downloads}</p>
-        </div>
+        <ul class="info">
+          <li><p>Likes</p> ${likes}</li>
+          <li><p>Views</p> ${views}</li>
+          <li><p>Comments</p> ${comments}</li>
+          <li><p>Downloads</p> ${downloads}</li>
+        </ul>
       </a>
     `;
   }).join('');
   gallery.insertAdjacentHTML('beforeend', markup);
+  
   
 }

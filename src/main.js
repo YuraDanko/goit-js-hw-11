@@ -1,4 +1,6 @@
 
+import 'loaders.css';
+
 import { fetchImages } from './js/pixabay-api.js';
 import { renderMarkup } from './js/render-functions.js';
 
@@ -9,12 +11,15 @@ import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
 const form = document.querySelector(`.js-search-form`);
+const loader = document.getElementById('loader'); 
+const gallery = document.querySelector('.gallery');
+
 let lightbox = new SimpleLightbox('.gallery-item', {
   captionsData: 'alt',
   captionDelay: 250,
 });
 
-form.addEventListener(`submit`, onFormSubmit)
+form.addEventListener(`submit`, onFormSubmit);
 
 function onFormSubmit(event) {
   event.preventDefault();
@@ -30,7 +35,10 @@ function onFormSubmit(event) {
     return; 
   }
 
-fetchImages(query.value)
+  loader.style.display = 'block';
+  gallery.innerHTML = '';  
+
+  fetchImages(query.value)
     .then(data => {
       if (data.hits.length === 0) {
         iziToast.error({
@@ -44,16 +52,14 @@ fetchImages(query.value)
       lightbox.refresh();
     })
     .catch(error => {
-    iziToast.error({
-      title: ``,
-      message: error.message,
-      position: 'topRight',
-    });
+      iziToast.error({
+        title: 'Error',
+        message: error.message,
+        position: 'topRight',
+      });
     })
-     .finally(() => {
+    .finally(() => {
       form.reset();
+      loader.style.display = 'none';
     });
-    ;
-  
-    
 }

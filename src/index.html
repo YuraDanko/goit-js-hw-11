@@ -12,10 +12,8 @@
       <input type="text" name="query" placeholder="Search images..." />
       <button class="button js-button" type="submit">Search</button>
     </form>
-
-    <!-- <div class="loader is-hidden">Loading...</div> -->
-
-    <div class="gallery js-gallery"></div>
+    <div id="loader" style="display: none"></div>
+    <ul class="gallery js-gallery"></ul>
 
     <script type="module" src="./js/pixabay-api.js"></script>
     <script type="module" src="./js/render-functions.js"></script>
